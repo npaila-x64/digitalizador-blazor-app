@@ -1,0 +1,14 @@
+﻿@page "/transcribir"
+@inject ImageService imageService
+
+<PageTitle>Transcribir Formulario</PageTitle>
+
+<button @onclick="TranscribeImage">Transcribir</button>
+
+@code {
+
+    private async void TranscribeImage()
+    {
+        await imageService.TranscribeImage();
+    }
+}

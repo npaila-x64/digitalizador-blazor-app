@@ -2,6 +2,18 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<div style="width: 100%; display: flex; flex-direction: row;">
+    <div style="padding-right: 10px; display: flex; flex-direction: column;">
+        <div style="width: 50px; text-align: center; margin-right: auto; margin-left: auto;">
+            <CargarFormulario />
+        </div>
+        <div id="image-container" style="max-width: 100%; width: 550px; height: 465px; overflow: auto; position: relative; border: 1px solid #000; overflow-y: scroll; margin-bottom: 25px">
+            <MostrarFormulario />
+        </div>
+        <TranscribirFormulario />
+    </div>
+    <Digitalizador />
+</div>
+
+
