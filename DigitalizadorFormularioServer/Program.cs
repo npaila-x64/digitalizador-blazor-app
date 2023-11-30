@@ -7,6 +7,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<ImageService>();
 builder.Services.AddScoped<FormularioService>();
+builder.Services.AddSingleton<MongoDbService>();
 
 var app = builder.Build();
 

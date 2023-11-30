@@ -9,13 +9,13 @@ class Solicitud {
     id = '-'
     estado = 'Por evaluar'
 
-    constructor(nombres, apellidoPaterno, apellidoMaterno, telefono, rut, especialidad, nombreDeLaUnidad, detalle, peticion) {
+    constructor(nombres, apellidoPaterno, apellidoMaterno, telefono, rut, especialidad, nombreUnidad, detalle, peticion) {
         this.Nombres = nombres
         this.ApellidoPaterno = apellidoPaterno
         this.ApellidoMaterno = apellidoMaterno
         this.Rut = rut
         this.Especialidad = especialidad
-        this.NombreUnidad = nombreDeLaUnidad
+        this.NombreUnidad = nombreUnidad
         this.Telefono = telefono
         this.Detalle = detalle
         this.Id = uuidv4()

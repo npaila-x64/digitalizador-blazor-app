@@ -2,6 +2,7 @@ using System.Net.Http.Json;
 
 public class FormularioService
 {
+    private readonly MongoDbService _mongoDbService;
     private FormularioTranscription _formularioData;
 
     public FormularioTranscription FormularioData
@@ -17,6 +18,11 @@ public class FormularioService
     public event Action OnDataChanged;
 
     private void NotifyDataChanged() => OnDataChanged?.Invoke();
+
+    public FormularioService(MongoDbService mongoDbService)
+    {
+        _mongoDbService = mongoDbService;
+    }
 
     public async Task EnviarFormulario()
     {
@@ -47,19 +53,7 @@ public class FormularioService
     }
     public async Task<List<FormularioTranscription>> ObtenerFormularios()
     {
-        var httpClient = new HttpClient();
-        var response = await httpClient.GetAsync("http://localhost:40401/solicitudes");
-        if (response.IsSuccessStatusCode)
-        {
-            // Nota: No se extraen objetos formularios, sino que se extrae un objeto que contiene los datos del mismo
-            var result = await response.Content.ReadFromJsonAsync<List<FormularioTranscription>>();
-            return result;
-        }
-        else
-        {
-            Console.WriteLine($"Error: {response.StatusCode}");
-            return null;
-        }
+        return await _mongoDbService.GetFormulariosAsync();
     }
 
 }
