@@ -1,17 +1,18 @@
 ﻿@page "/cargar"
 @inject ImageService imageService
 
-<PageTitle>Cargar Formulario</PageTitle>
-
 <InputFile OnChange="@OnFileSelected" />
 
 @code {
-    private async Task OnFileSelected(InputFileChangeEventArgs e)
-    {
+    private async Task OnFileSelected(InputFileChangeEventArgs e) {
         var file = e.File;
         if (file != null)
         {
             await imageService.StoreFileAsync(file);
+            Console.WriteLine("Image saved!");
+        } else
+        {
+            Console.WriteLine("Null value???");
         }
     }
 }

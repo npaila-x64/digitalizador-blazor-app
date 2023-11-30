@@ -1,0 +1,23 @@
+﻿.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8em;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid black;
+}
+
+.table td {
+    background-color: #dddddd;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.table td:last-child {
+    width: 200px;
+    overflow: auto;
+}

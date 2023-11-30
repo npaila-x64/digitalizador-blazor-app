@@ -1,0 +1,17 @@
+
+.container {
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#image-container {
+    max-width: 100%;
+    width: 550px;
+    height: 555px;
+    overflow: auto;
+    position: relative;
+    border: 1px solid #000;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+}

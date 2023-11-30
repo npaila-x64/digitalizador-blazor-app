@@ -22,6 +22,7 @@ public class ImageService
         _fileStream = new MemoryStream();
         await file.OpenReadStream().CopyToAsync(_fileStream);
         _fileStream.Position = 0;
+        Console.WriteLine($"Stored {_fileStream.Length} bytes");
 
         ConvertImageToBase64();
     }
