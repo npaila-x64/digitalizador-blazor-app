@@ -1,0 +1,49 @@
+﻿@page "/formularios"
+@inject FormularioService FormularioService
+
+@if (formularios == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombres</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Rut</th>
+                <th>Especialidad</th>
+                <th>Telefono</th>
+                <th>Nombre Unidad</th>
+                <th>Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var formulario in formularios)
+            {
+                <tr>
+                    <td>@formulario.Nombres</td>
+                    <td>@formulario.ApellidoPaterno</td>
+                    <td>@formulario.ApellidoMaterno</td>
+                    <td>@formulario.Rut</td>
+                    <td>@formulario.Especialidad</td>
+                    <td>@formulario.Telefono</td>
+                    <td>@formulario.NombreUnidad</td>
+                    <td>@formulario.Detalle</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private List<FormularioTranscription> formularios;
+
+    protected override async Task OnInitializedAsync()
+    {
+        formularios = await FormularioService.ObtenerFormularios();
+    }
+}

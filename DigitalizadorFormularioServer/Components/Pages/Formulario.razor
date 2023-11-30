@@ -1,0 +1,67 @@
+@page "/form"
+@attribute [StreamRendering]
+@inject FormularioService formularioService
+
+<style>
+    .input-field {
+        border-radius: 10px;
+        color: #000000;
+        background-color: #ffffff;
+        width: 100%;
+        padding: 3px;
+    }
+</style>
+
+<div class="form-container">
+    <EditForm Model="formularioService.FormularioData">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <h4>Nombres: </h4>
+        <InputText id="nombres" class="input-field" @bind-Value="formularioService.FormularioData.Nombres" placeholder="" />
+        <h4>Apellido paterno: </h4>
+        <InputText id="apellidoPaterno" class="input-field" @bind-Value="formularioService.FormularioData.ApellidoPaterno" placeholder="" />
+        <h4>Apellido materno: </h4>
+        <InputText id="apellidoMaterno" class="input-field" @bind-Value="formularioService.FormularioData.ApellidoMaterno" placeholder="" />
+        <h4>RUT: </h4>
+        <InputText id="rut" size="60" class="input-field" @bind-Value="formularioService.FormularioData.Rut" placeholder="" />
+        <h4>Especialidad: </h4>
+        <InputText id="especialidad" class="input-field" @bind-Value="formularioService.FormularioData.Especialidad" placeholder="" />
+        <h4>Teléfono: </h4>
+        <InputText id="telefono" class="input-field" @bind-Value="formularioService.FormularioData.Telefono" placeholder="" />
+        <h4>Unidad: </h4>
+        <InputText id="nombreUnidad" class="input-field" @bind-Value="formularioService.FormularioData.NombreUnidad" placeholder="" />
+        <h4>Explícanos tu problema:</h4>
+        <InputTextArea id="detallesSituacion" class="input-field" rows="3" @bind-Value="formularioService.FormularioData.Detalle" placeholder="" />
+        <h4></h4>
+
+        <button type="submit" style="width: 100%;" @onclick="EnviarFormulario">Ingresar</button>
+
+    </EditForm>
+</div>
+
+@code {
+    private async void EnviarFormulario()
+    {
+        await formularioService.EnviarFormulario();
+    }
+    
+   protected override void OnInitialized() {
+        formularioService.OnDataChanged += StateHasChanged;
+
+        formularioService.FormularioData = new FormularioTranscription {
+            Nombres         = "",
+            ApellidoPaterno = "",
+            ApellidoMaterno = "",
+            Rut             = "",
+            Especialidad    = "",
+            Telefono        = "",
+            NombreUnidad    = "",
+            Detalle         = ""
+        };
+    }
+
+    public void Dispose() {
+        formularioService.OnDataChanged -= StateHasChanged;
+    }
+}

@@ -1,0 +1,18 @@
+@page "/mostrar"
+@inject ImageService ImageService
+
+<PageTitle>Mostrar Formulario</PageTitle>
+
+@if (!string.IsNullOrEmpty(ImageService.ImageBase64)) {
+    <img src="@($"data:image/png;base64,{ImageService.ImageBase64}")" style="max-width: 100%; height: auto; transform: scale(1);" />
+}
+
+@code {
+    protected override void OnInitialized() {
+        ImageService.OnImageProcessed += StateHasChanged;
+    }
+
+    public void Dispose() {
+        ImageService.OnImageProcessed -= StateHasChanged;
+    }
+}
