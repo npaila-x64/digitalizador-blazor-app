@@ -24,7 +24,7 @@ public class Message
 public class OpenAIService
 {
     private readonly HttpClient _httpClient;
-    private readonly string _apiKey = "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";
+    private readonly string _apiKey = "sk-...";
 
 
     public OpenAIService(HttpClient httpClient)
