@@ -28,17 +28,17 @@ public class FormularioService
     {
         Guid newUuid = Guid.NewGuid();
         var formulario = new Formulario();
-        formulario.id = newUuid.ToString();
-        formulario.nombres = _formularioData.Nombres;
-        formulario.apellidoPaterno = _formularioData.ApellidoPaterno;
-        formulario.apellidoMaterno = _formularioData.ApellidoMaterno;
-        formulario.rut = _formularioData.Rut;
-        formulario.especialidad = _formularioData.Especialidad;
-        formulario.nombreUnidad = _formularioData.NombreUnidad;
-        formulario.telefono = _formularioData.Telefono;
-        formulario.detalle = _formularioData.Detalle;
-        formulario.estado = "Por evaluar";
-        formulario.peticion = "";
+        formulario.Id = newUuid.ToString();
+        formulario.Nombres = _formularioData.Nombres;
+        formulario.ApellidoPaterno = _formularioData.ApellidoPaterno;
+        formulario.ApellidoMaterno = _formularioData.ApellidoMaterno;
+        formulario.Rut = _formularioData.Rut;
+        formulario.Especialidad = _formularioData.Especialidad;
+        formulario.NombreUnidad = _formularioData.NombreUnidad;
+        formulario.Telefono = _formularioData.Telefono;
+        formulario.Detalle = _formularioData.Detalle;
+        formulario.Estado = "Por evaluar";
+        formulario.Peticion = "";
         _mongoDbService.AddFormularioAsync(formulario);
     }
     public async Task<List<FormularioTranscription>> ObtenerFormularios()

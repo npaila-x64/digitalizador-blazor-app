@@ -19,14 +19,14 @@ public class MongoDbService
         var formularios = await _formulariosCollection.Find(_ => true).ToListAsync();
         return formularios.Select(formulario => new FormularioTranscription
         {
-            Nombres = formulario.nombres,
-            ApellidoPaterno = formulario.apellidoPaterno,
-            ApellidoMaterno = formulario.apellidoMaterno,
-            Rut = formulario.rut,
-            Especialidad = formulario.especialidad,
-            NombreUnidad = formulario.nombreUnidad,
-            Telefono = formulario.telefono,
-            Detalle = formulario.detalle,
+            Nombres = formulario.Nombres,
+            ApellidoPaterno = formulario.ApellidoPaterno,
+            ApellidoMaterno = formulario.ApellidoMaterno,
+            Rut = formulario.Rut,
+            Especialidad = formulario.Especialidad,
+            NombreUnidad = formulario.NombreUnidad,
+            Telefono = formulario.Telefono,
+            Detalle = formulario.Detalle,
         }).ToList();
     }
 

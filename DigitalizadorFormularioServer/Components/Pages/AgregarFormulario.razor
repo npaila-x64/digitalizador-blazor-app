@@ -1,10 +1,17 @@
 ﻿@page "/agregar"
 
-<PageTitle>Agregar Formulario</PageTitle>
-
-<div style="width: 100%; display: flex; flex-direction: row;">
-    <ImagenFormulario />
-    <Formulario />
+<div style="width: 100%; display: flex; flex-direction: row; align-items: center;">
+    <div style="background-color: rgb(112, 108, 108); border-radius: 15px; padding: 15px; width:50%; height: 100%; margin-right: 10px;">
+        <Formulario />
+    </div>
+    
+    <div style="display: flex; flex-direction: column; background-color: rgb(112, 108, 108); border-radius: 15px; padding: 15px; width:50%; height: 100%;">
+        <CargarFormulario />
+        
+        <div id="image-container" style="width: 100%px; height: 100%px; overflow: auto; position: relative; border: 1px solid #000; overflow-y: scroll; margin-bottom: 25px">
+            <MostrarFormulario />
+        </div>
+        
+        <TranscribirFormulario />
+    </div>
 </div>
-
-

@@ -1,15 +1,5 @@
 version: "3.9"
 services:
-  solicitudes:
-    build:
-      context: .
-      dockerfile: build/Dockerfile
-    depends_on:
-      - solicitudes-mongo
-    ports:
-      - "40401:40401"
-    networks:
-      - my_network
   solicitudes-mongo:
     image: mongo:4.4.18
     ports:

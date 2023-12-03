@@ -6,15 +6,15 @@ public class Formulario
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public ObjectId _id { get; set; }
-    public string id { get; set; }
-    public string nombres { get; set; }
-    public string apellidoPaterno { get; set; }
-    public string apellidoMaterno { get; set; }
-    public string rut { get; set; }
-    public string especialidad { get; set; }
-    public string nombreUnidad { get; set; }
-    public string telefono { get; set; }
-    public string estado { get; set; }
-    public string detalle { get; set; }
-    public string peticion { get; set; }
+    public string Id { get; set; }
+    public string Nombres { get; set; }
+    public string ApellidoPaterno { get; set; }
+    public string ApellidoMaterno { get; set; }
+    public string Rut { get; set; }
+    public string Especialidad { get; set; }
+    public string NombreUnidad { get; set; }
+    public string Telefono { get; set; }
+    public string Estado { get; set; }
+    public string Detalle { get; set; }
+    public string Peticion { get; set; }
 }
