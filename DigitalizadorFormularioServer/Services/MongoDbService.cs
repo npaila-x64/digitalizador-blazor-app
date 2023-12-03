@@ -1,5 +1,6 @@
 
 using MongoDB.Driver;
+using System;
 
 public class MongoDbService
 {
@@ -29,18 +30,8 @@ public class MongoDbService
         }).ToList();
     }
 
-    // public async Task AddFormularioAsync(FormularioTranscription formulario)
-    // {
-    //     await _formulariosCollection.InsertOneAsync(new Formulario
-    //     {
-    //         Nombres = formulario.Nombres,
-    //         ApellidoPaterno = formulario.ApellidoPaterno,
-    //         ApellidoMaterno = formulario.ApellidoMaterno,
-    //         Rut = formulario.Rut,
-    //         Especialidad = formulario.Especialidad,
-    //         NombreUnidad = formulario.NombreUnidad,
-    //         Telefono = formulario.Telefono,
-    //         Detalle = formulario.Detalle,
-    //     });
-    // }
+    public async Task AddFormularioAsync(Formulario formulario)
+    {
+        await _formulariosCollection.InsertOneAsync(formulario);
+    }
 }

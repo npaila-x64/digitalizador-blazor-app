@@ -60,9 +60,18 @@ public class ImageService
     public FormularioTranscription ProcessJson(string jsonEnclosedByThreeBackticks)
     {
         string json = jsonEnclosedByThreeBackticks.Replace("```", "").Replace("json", "").Trim();
-        var formulario = JsonConvert.DeserializeObject<FormularioTranscription>(json);
+        var jsonAsDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+        var formulario = new FormularioTranscription();
 
-        // Return a new instance if deserialization returns null
-        return formulario ?? new FormularioTranscription(); 
+        formulario.Nombres = jsonAsDict.ContainsKey("NOMBRES") ? jsonAsDict["NOMBRES"] : "";
+        formulario.ApellidoPaterno = jsonAsDict.ContainsKey("APELLIDO PATERNO") ? jsonAsDict["APELLIDO PATERNO"] : "";
+        formulario.ApellidoMaterno = jsonAsDict.ContainsKey("APELLIDO MATERNO") ? jsonAsDict["APELLIDO MATERNO"] : "";
+        formulario.Rut = jsonAsDict.ContainsKey("RUT") ? jsonAsDict["RUT"] : "";
+        formulario.Especialidad = jsonAsDict.ContainsKey("ESPECIALIDAD DEL FUNCIONARIO") ? jsonAsDict["ESPECIALIDAD DEL FUNCIONARIO"] : "";
+        formulario.NombreUnidad = jsonAsDict.ContainsKey("NOMBRE DE LA UNIDAD") ? jsonAsDict["NOMBRE DE LA UNIDAD"] : "";
+        formulario.Telefono = jsonAsDict.ContainsKey("TELÉFONO") ? jsonAsDict["TELÉFONO"] : "";
+        formulario.Detalle = jsonAsDict.ContainsKey("DETALLE SITUACIÓN ECONOMICA") ? jsonAsDict["DETALLE SITUACIÓN ECONOMICA"] : "";
+
+        return formulario; 
     }
 }

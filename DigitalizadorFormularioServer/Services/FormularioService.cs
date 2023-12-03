@@ -26,30 +26,20 @@ public class FormularioService
 
     public async Task EnviarFormulario()
     {
-        var obj = new
-        {
-            Nombres = _formularioData.Nombres,
-            ApellidoPaterno = _formularioData.ApellidoPaterno,
-            ApellidoMaterno = _formularioData.ApellidoMaterno,
-            Rut = _formularioData.Rut,
-            Especialidad = _formularioData.Especialidad,
-            NombreUnidad = _formularioData.NombreUnidad,
-            Telefono = _formularioData.Telefono,
-            Detalle = _formularioData.Detalle,
-        };
-
-        JsonContent content = JsonContent.Create(obj);
-
-        var httpClient = new HttpClient();
-        var response = await httpClient.PostAsync("http://localhost:40401/solicitudes", content);
-        if (response.IsSuccessStatusCode)
-        {
-            Console.WriteLine("Formulario sent!");
-        }
-        else
-        {
-            Console.WriteLine($"Error: {response.StatusCode}");
-        }
+        Guid newUuid = Guid.NewGuid();
+        var formulario = new Formulario();
+        formulario.id = newUuid.ToString();
+        formulario.nombres = _formularioData.Nombres;
+        formulario.apellidoPaterno = _formularioData.ApellidoPaterno;
+        formulario.apellidoMaterno = _formularioData.ApellidoMaterno;
+        formulario.rut = _formularioData.Rut;
+        formulario.especialidad = _formularioData.Especialidad;
+        formulario.nombreUnidad = _formularioData.NombreUnidad;
+        formulario.telefono = _formularioData.Telefono;
+        formulario.detalle = _formularioData.Detalle;
+        formulario.estado = "Por evaluar";
+        formulario.peticion = "";
+        _mongoDbService.AddFormularioAsync(formulario);
     }
     public async Task<List<FormularioTranscription>> ObtenerFormularios()
     {
